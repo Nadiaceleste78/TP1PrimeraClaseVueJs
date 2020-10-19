@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primera Clase</title>
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="main.css">
+
+    <!-- Importación de Vue.js por CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+    <!-- HTML con renderización declarativa -->
+    <div id="app">
+        <div class="wrapper">
+            <h1>Presentación en el curso de Vue.js</h1>
+            <h2>Datos personales</h2>
+            <ul>
+                <li> Nombre completo: {{`${firstName} ${lastName}`}} </li>
+                <li> Edad: {{ 2020 - yearOfBirth }} años </li>
+                <li>Lugar de procedencia: {{ placeOfOrigin }} </li>
+                <li>Perfil de github: <a href ='{{gitHubProfile}}'>Link</a></li>
+            </ul>
+            <h2>Experiencia con CSS</h2>
+                
+                <p :style= "cssExperience.length < 50 ? 'color: green' : 'color: red'">
+                    <b>
+                        {{cssExperience}}
+                    </b>
+                </p>
+                
+            <h2>Experiencia con JS</h2>
+                <p :style= "jsExperience.length < 50 ? 'color: green' : 'color: red'">
+                    <b>
+                        {{jsExperience}}
+                    </b>
+                </p>
+                
+
+            <h2>Cursos</h2>
+                <ul>
+                    <li>
+                        {{`${courses.title} - ${courses.endDate}`}}
+                    </li>
+                    
+                </ul>
+        
+            <h2>Proyectos</h2>
+    
+                <h3>{{ proyects ? ' ' : 'No he realizado proyectos aún.' }}</h3>
+        </div>
+    </div>
+    <!-- / -->
+
+    <!-- Su JS aquí debajo por favor... -->
+    <script>
+        var app = new Vue({
+            el: '#app', // Este será el id de la tarjeta contenedora de nuestra App Vue.js
+            data: {
+
+                // Datos personales
+
+                firstName: 'Nadia',
+                lastName: 'Ferreyra',
+                yearOfBirth: 1988 ,
+
+                // ***AGREGAR VARIABLES***
+                placeOfOrigin: 'Córdoba',
+                gitHubProfile: 'https://github.com/Nadiaceleste78',
+                // Otros datos
+
+                cssExperience: 'Experiencia adquirida del curso de Desarrollo Web Full Stack realizado en Doctadevs dictado por los profesores Lucio Negrello y Cristian Ramanzin.', // Modíficá este texto
+                jsExperience: 'Experiencia adquirida del mismo curso.', // Modificá este texto
+
+                courses:
+                    {   title: 'Desarrollo Web Full Stack',
+                        endDate: 'En curso',
+                    },
+                    
+                // Los objetos deberían tener una forma similar a {title: String, endDate: String}
+                projects: false, 
+                // Los objetos deberían tener una forma similar a {title: String, link: String}
+            }
+        })
+    </script>
+    <!-- / -->
+    
+</body>
+</html>
